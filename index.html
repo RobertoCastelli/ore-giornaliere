@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="IT">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- FONTAWSOME -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <title>OR3</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>OR<span class="text-danger font-weight-bold">3</span> Giornaliere</h1>
+        <h5 id="data"></h5>
+
+        <hr>
+
+        <div id="calendario">
+            <label for="calendario">Giorno Lavorato</label>
+            <input type="date" name="calendario">
+        </div>
+
+        <div id="diaria">
+            <label for="diaria">Diaria</label>
+            <div class="diaria_radio">
+                <input type="radio" name="diaria" value="T0" checked>T0
+                <input type="radio" name="diaria" value="T1">T1
+                <input type="radio" name="diaria" value="T2">T2
+                <input type="radio" name="diaria" value="T3">T3
+            </div>
+        </div>
+
+        <div id="presenza">
+            <label for="presenza">Ore Assenza</label>
+            <div class="presenza_radio">
+                <input type="radio" name="presenza" value="0" checked>0
+                <input type="radio" name="presenza" value="2">2
+                <input type="radio" name="presenza" value="4">4
+                <input type="radio" name="presenza" value="6">6
+                <input type="radio" name="presenza" value="8">Ferie
+            </div>
+        </div>
+
+        <div id="reperibilita">
+            <label for="reperibilita">Reperibilità</label>
+            <div class="reperibilita_radio">
+                <input type="radio" name="reperibilita" value="NO" checked>NO
+                <input type="radio" name="reperibilita" value="SI">SI
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="commessa">
+            <label for="commessa">Commessa</label>
+            <select id="commessa">
+                <option value="13-0050">13-0050</option>
+                <option value="13-0055">13-0055</option>
+                <option value="14-0012">14-0012</option>
+                <option value="14-0013">14-0013</option>
+                <option value="16-0031">16-0031</option>
+                <option value="16-0006">16-0006</option>
+                <option value="17-0018">17-0018</option>
+                <option value="17-0038">17-0038</option>
+                <option value="17-0044">17-0044</option>
+                <option value="17-0062">17-0062</option>
+                <option value="17-0086">17-0086</option>
+            </select>
+        </div>
+
+        <div class="centrale">
+            <label for="centrale">Centrale</label>
+            <input id="centrale" type="text" maxlength="12" placeholder="Inserisci sito">
+        </div>
+
+        <div class="assistente">
+            <label for="assistente">Assitente</label>
+            <select id="assistente">
+                <option value="Angelo Di Dedda">Angelo Maria Di Dedda</option>
+                <option value="Carmelo Scicolone">Carmelo Scicolone</option>
+                <option value="Cesare Mattarini">Cesare Mattarini</option>
+                <option value="Federico Inverardi">Federico Inverardi</option>
+                <option value="Marco Iozzo">Marco Iozzo</option>
+                <option value="Roberto Castelli">Roberto Castelli</option>
+                <option value="Roberto Coltro">Roberto Coltro</option>
+                <option value="Roberto Liguori">Roberto Liguori</option>
+                <option value="Simone Lo Carmine">Simone Lo Carmine</option>
+            </select>
+        </div>
+
+        <div class="oreDiurne">
+            <label for="oreDiurne">Ore Diurne</label>
+            <input id="oreDiurne" type="number" value="8" min="0" max="20">
+        </div>
+
+        <div class="oreNotturne">
+            <label for="oreNotturne">Ore Notturne</label>
+            <input id="oreNotturne" type="number" value="0" min="0" max="20">
+        </div>
+
+        <div class="txtVal">
+            <label for="txtVal">Lavoro</label>
+            <input id="txtVal" type="text" maxlength="20" placeholder="Inserisci e Aggiungi">
+        </div>
+
+        <hr>
+
+        <ul id="lista" class="list-unstyled">
+            <li>LISTA 1</li>
+            <li>LISTA 2</li>
+            <li>LISTA 3</li>
+        </ul>
+
+        <hr>
+
+        <div id="buttons">
+            <button id="btnInvia">Invia</button>
+            <button id="btnClear">Elimina</button>
+        </div>
+
+        <footer>
+            <p>OR3 &copy; 2019 - Roberto Castelli ver.03.09</p>
+        </footer>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>

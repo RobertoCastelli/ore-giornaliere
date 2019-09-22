@@ -1,0 +1,33 @@
+h1, h5 {
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+
+footer {
+    text-align: center;
+}
+
+.container {
+    background-image: linear-gradient(lightgrey, white, lightgrey);
+    border-radius: 15px;
+    max-width: 350px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#calendario,
+#diaria,
+#presenza,
+#reperibilita,
+.commessa,
+.centrale,
+.assistente,
+.oreDiurne,
+.oreNotturne,
+.txtVal {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
