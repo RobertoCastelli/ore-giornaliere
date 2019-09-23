@@ -1,20 +1,48 @@
 h1, h5 {
     text-align: center;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
 }
 
 footer {
     text-align: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    color: grey;
+}
+
+i,
+.commessaLi,
+.oreLi {
+    color: brown;
+}
+
+i {
+    float: right;
+}
+
+li {
+    margin-top: 15px;
+}
+
+select,
+#centrale,
+#btnAggiungi,
+input[type="date"] {
+    width: 180px;
 }
 
 .container {
-    background-image: linear-gradient(lightgrey, white, lightgrey);
+    background: url('img/bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     border-radius: 15px;
-    max-width: 350px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 2px solid grey;
+    max-width: 400px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-#calendario,
+#giornoLavorato,
 #diaria,
 #presenza,
 #reperibilita,
@@ -23,10 +51,26 @@ footer {
 .assistente,
 .oreDiurne,
 .oreNotturne,
-.txtVal {
+.lavorazione,
+.buttons {
     display: flex;
     justify-content: space-between;
+    margin-top: 5px;
 }
+
+.buttons {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: right;
+}
+
+.presenza_radio input,
+.diaria_radio input,
+.reperibilità_radio input  {
+    margin-left: 10px;
+}
+
+
 
 
 

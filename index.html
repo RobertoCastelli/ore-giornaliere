@@ -23,12 +23,12 @@
 
         <h1>OR<span class="text-danger font-weight-bold">3</span> Giornaliere</h1>
         <h5 id="data"></h5>
-
+  
         <hr>
 
-        <div id="calendario">
+        <div id="giornoLavorato">
             <label for="calendario">Giorno Lavorato</label>
-            <input type="date" name="calendario">
+            <input id="calendario" type="date">
         </div>
 
         <div id="diaria">
@@ -64,76 +64,53 @@
 
         <div class="commessa">
             <label for="commessa">Commessa</label>
-            <select id="commessa">
-                <option value="13-0050">13-0050</option>
-                <option value="13-0055">13-0055</option>
-                <option value="14-0012">14-0012</option>
-                <option value="14-0013">14-0013</option>
-                <option value="16-0031">16-0031</option>
-                <option value="16-0006">16-0006</option>
-                <option value="17-0018">17-0018</option>
-                <option value="17-0038">17-0038</option>
-                <option value="17-0044">17-0044</option>
-                <option value="17-0062">17-0062</option>
-                <option value="17-0086">17-0086</option>
-            </select>
+            <select id="commessa"></select>
         </div>
 
         <div class="centrale">
             <label for="centrale">Centrale</label>
-            <input id="centrale" type="text" maxlength="12" placeholder="Inserisci sito">
+            <input id="centrale" type="text" maxlength="11" placeholder="Inserisci sito">
         </div>
 
         <div class="assistente">
             <label for="assistente">Assitente</label>
-            <select id="assistente">
-                <option value="Angelo Di Dedda">Angelo Maria Di Dedda</option>
-                <option value="Carmelo Scicolone">Carmelo Scicolone</option>
-                <option value="Cesare Mattarini">Cesare Mattarini</option>
-                <option value="Federico Inverardi">Federico Inverardi</option>
-                <option value="Marco Iozzo">Marco Iozzo</option>
-                <option value="Roberto Castelli">Roberto Castelli</option>
-                <option value="Roberto Coltro">Roberto Coltro</option>
-                <option value="Roberto Liguori">Roberto Liguori</option>
-                <option value="Simone Lo Carmine">Simone Lo Carmine</option>
-            </select>
+            <select id="assistente"></select>
         </div>
 
         <div class="oreDiurne">
             <label for="oreDiurne">Ore Diurne</label>
-            <input id="oreDiurne" type="number" value="8" min="0" max="20">
+            <select id="oreDiurne"></select>
         </div>
 
         <div class="oreNotturne">
             <label for="oreNotturne">Ore Notturne</label>
-            <input id="oreNotturne" type="number" value="0" min="0" max="20">
+            <select id="oreNotturne"></select>
         </div>
 
-        <div class="txtVal">
-            <label for="txtVal">Lavoro</label>
-            <input id="txtVal" type="text" maxlength="20" placeholder="Inserisci e Aggiungi">
+        <div class="lavorazione">
+            <label for="lavorazione">Lavorazione</label>
+            <select id="lavorazione"></select>
         </div>
+
+        <div class="buttons">
+            <button id="btnAggiungi" class="btn btn-success w-100">AGGIUNGI LAVORO</button>
+        </div>
+
+        <ol id="lista" class="list-unstyled"></ol>
 
         <hr>
 
-        <ul id="lista" class="list-unstyled">
-            <li>LISTA 1</li>
-            <li>LISTA 2</li>
-            <li>LISTA 3</li>
-        </ul>
-
-        <hr>
-
-        <div id="buttons">
-            <button id="btnInvia">Invia</button>
-            <button id="btnClear">Elimina</button>
+        <div class="buttons">
+            <button id="btnInvia" class="btn btn-info w-100">INVIA I DATI</button>
         </div>
-
+   
         <footer>
             <p>OR3 &copy; 2019 - Roberto Castelli ver.03.09</p>
         </footer>
     </div>
 
+    <script src="js/functions.js"></script>
+    <script src="js/contenitori.js"></script>
     <script src="js/app.js"></script>
 </body>
 
