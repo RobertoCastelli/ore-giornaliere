@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="IT">
 
@@ -6,12 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <!-- FIREBASE -->
+    <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-firestore.js"></script>
+
     <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <!-- FONTAWSOME -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
@@ -42,13 +49,14 @@
         </div>
 
         <div id="presenza">
-            <label for="presenza">Ore Assenza</label>
+            <label for="presenza">Assenza</label>
             <div class="presenza_radio">
                 <input type="radio" name="presenza" value="0" checked>0
                 <input type="radio" name="presenza" value="2">2
                 <input type="radio" name="presenza" value="4">4
                 <input type="radio" name="presenza" value="6">6
-                <input type="radio" name="presenza" value="8">Ferie
+                <input type="radio" name="presenza" value="8">8
+                <input type="radio" name="presenza" value="Ferie">Ferie
             </div>
         </div>
 
@@ -69,7 +77,7 @@
 
         <div class="centrale">
             <label for="centrale">Centrale</label>
-            <input id="centrale" type="text" maxlength="11" placeholder="Inserisci sito">
+            <input id="centrale" type="text" maxlength="8" placeholder="Inserisci sito">
         </div>
 
         <div class="assistente">
@@ -108,6 +116,22 @@
             <p>OR3 &copy; 2019 - Roberto Castelli ver.03.09</p>
         </footer>
     </div>
+
+
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyBlu3h8vHNW3-9gax6p5XqeBhQV_GLMsRw",
+            authDomain: "ore-giornaliere.firebaseapp.com",
+            databaseURL: "https://ore-giornaliere.firebaseio.com",
+            projectId: "ore-giornaliere",
+            storageBucket: "ore-giornaliere.appspot.com",
+            messagingSenderId: "148382190580",
+            appId: "1:148382190580:web:313f681467b302f9da47a1"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+    </script>
 
     <script src="js/functions.js"></script>
     <script src="js/contenitori.js"></script>

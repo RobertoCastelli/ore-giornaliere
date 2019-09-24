@@ -6,6 +6,7 @@ const dataDiOggi = document.getElementById('data')
 let calendario = document.getElementById('calendario');
 let diaria = document.getElementsByName('diaria');
 let presenza = document.getElementsByName('presenza');
+let ferie = document.getElementsByName('ferie');
 let reperibilita = document.getElementsByName('reperibilita');
 
 // STEP 2 VARIABLES
@@ -16,14 +17,13 @@ let oreDiurne = document.getElementById('oreDiurne');
 let oreNotturne = document.getElementById('oreNotturne');
 let lavorazione = document.getElementById('lavorazione');
 
-
 // STEP 3 VARIABLES
 let invia = document.getElementById('btnInvia');
 let aggiungi = document.getElementById('btnAggiungi');
 let lista = document.getElementById('lista');
 let id = 0;
 
-// DISPLAY {DATE + GG + MM + AAAA}
+// DISPLAY TODAY'S DATE IN TITLE
 let dataCompleta = new Date();
 let giornoDellaSettimana = ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'][dataCompleta.getDay()];
 let formatDataDiOggi = dataCompleta.getDate() + '-' + (dataCompleta.getMonth() + 1) + '-' + dataCompleta.getFullYear();
@@ -40,6 +40,7 @@ populateList(ore, oreDiurne);
 populateList(ore, oreNotturne);
 populateList(lavorazioni, lavorazione);
 
+
 // POPULATE JOB LIST
 aggiungi.addEventListener('click', () => {
     populateJob();
@@ -48,23 +49,8 @@ aggiungi.addEventListener('click', () => {
 
 // INVIA DATI FIREBASE
 invia.addEventListener('click', () => {
-    inviaDati();
-})
-
-
-// DATI PER COMPILARE FILE EXCEL
-let datiPerDatabase = 
-{
-    giorno: dataCompleta.getDate(),
-    diaria: diaria.value,
-    permessi: presenza.value,
-    reperibilita: reperibilita.value,
-    oreTotali: [commessa.value, oreTotali],
-    oreNotturne: oreNotturne.value
-}
-
-
-
+    inviaDati(event);
+});
 
 
 
