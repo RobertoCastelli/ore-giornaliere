@@ -21,7 +21,12 @@ let lavorazione = document.getElementById('lavorazione');
 let invia = document.getElementById('btnInvia');
 let aggiungi = document.getElementById('btnAggiungi');
 let lista = document.getElementById('lista');
+
+// CONTAINERS
+let oreDiurneValue = 0;
+let oreNotturneValue = 0;
 let id = 0;
+let jobArray = [];
 
 // DISPLAY TODAY'S DATE IN TITLE
 let dataCompleta = new Date();
@@ -40,10 +45,11 @@ populateList(ore, oreDiurne);
 populateList(ore, oreNotturne);
 populateList(lavorazioni, lavorazione);
 
-
 // POPULATE JOB LIST
 aggiungi.addEventListener('click', () => {
     populateJob();
+    getDatiJob(); 
+    centrale.value = '';
     id++;
 });
 
@@ -54,42 +60,6 @@ invia.addEventListener('click', () => {
 
 
 
-
-// // --- FOCUS PUNTATORE t0
-// window.onload = function () {
-//     txtVal.focus();
-// }
-
-// // --- var ELENCO
-// var listNode = document.getElementById('lista');
-// var txtVal = document.getElementById('txtVal');
-
-// // --- var BOTTONI
-// var clear = document.getElementById('btnClear');
-// var aggiungi = document.getElementById('btnAggiungi');
-// var invia = document.getElementById('btnInvia');
-
-// // --- var STEP 1
-// var calendario = document.getElementById('calendario');
-// var diaria = document.getElementsByName('diaria');
-// var reperibilita = document.getElementsByName('reperibilita');
-// var presenza = document.getElementsByName('presenza');
-
-// // --- var STEP 2
-// var assistente = document.getElementById('assistente');
-// var oreDiurne = document.getElementById('oreDiurne');
-// var oreNotturne = document.getElementById('oreNotturne');
-// var commessa = document.getElementById('commessa');
-// var centrale = document.getElementById('centrale');
-
-// // --- stringa DATA 
-// var data = new Date();
-// var todayData = data.getDate() + '-' + (data.getMonth() + 1) + '-' + data.getFullYear();
-// var giorno = ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'][new Date().getDay()];
-// document.getElementById('data').innerHTML = giorno + ' ' + todayData;
-
-// // --- CALENDARIO "today"
-// // calendario.valueAsDate = new Date();
 
 // // --- var EMAIL 
 // var assistArray = [];
@@ -102,8 +72,6 @@ invia.addEventListener('click', () => {
 // var oreArrayDiurne = [];
 // var oreArrayNotturne = [];
 
-// // --- var CONTATORE id
-// var id = 0;
 
 // // --- enter AGGIUNGE ATTIVITA' in elenco
 // aggiungi.addEventListener('click', function () {
@@ -131,12 +99,6 @@ invia.addEventListener('click', () => {
 //         oreArrayDiurne.push(oreDiurneVal);
 //         oreArrayNotturne.push(opremireNotturneVal);
 //         assistArray.push(assistente.value);
-
-//         // --- SVUOTA le textbox, FOCUS puntatore, INCREMENTA id
-//         txtVal.value = "";
-//         centrale.value = "";
-//         txtVal.focus();
-//         id++;
 //     }
 // });
 
