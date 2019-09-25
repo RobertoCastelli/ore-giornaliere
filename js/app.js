@@ -55,7 +55,7 @@ aggiungi.addEventListener('click', () => {
 
 // INVIA DATI FIREBASE
 invia.addEventListener('click', () => {
-    inviaDati(event);
+    if (confirm('Conferma invio dati al server')) inviaDati(event);
 });
 
 
