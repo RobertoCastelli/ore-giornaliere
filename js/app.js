@@ -21,12 +21,7 @@ let lavorazione = document.getElementById('lavorazione');
 let invia = document.getElementById('btnInvia');
 let aggiungi = document.getElementById('btnAggiungi');
 let lista = document.getElementById('lista');
-
-// CONTAINERS
-let oreDiurneValue = 0;
-let oreNotturneValue = 0;
-let id = 0;
-let jobArray = [];
+let commessaLi = document.querySelectorAll('.commessaLi');
 
 // DISPLAY TODAY'S DATE IN TITLE
 let dataCompleta = new Date();
@@ -45,12 +40,16 @@ populateList(ore, oreDiurne);
 populateList(ore, oreNotturne);
 populateList(lavorazioni, lavorazione);
 
-// POPULATE JOB LIST
+// POPULATE JOB LIST 
+// COLLOCA ORE PER COMMESSA
+// COLLOCA ORE NOTTURNE
 aggiungi.addEventListener('click', () => {
     populateJob();
-    getDatiJob(); 
+    pushOreInCommessa();
+    pushOreNotturne();
     centrale.value = '';
     id++;
+   
 });
 
 // INVIA DATI FIREBASE
