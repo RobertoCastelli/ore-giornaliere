@@ -12,25 +12,28 @@ function populateList(arr, idSelect) {
 
 // AGGIUNGE LAVORO NELL'ELENCO UL
 function populateJob() {
-  if (centrale.value == "") {
-    alert("Inserire nome centrale");
-  } else {
     oreDiurneValue = parseInt(oreDiurne.value);
     oreNotturneValue = parseInt(oreNotturne.value);
+    oreTotaliValue = oreDiurneValue + oreNotturneValue;
+    // HTML STRUCTURE FOR JOB
     let job = 
         `<li id=${id}>
           <div>
             <span class="commessaLi">${commessa.value}</span>
-            <span class="oreTotaliLi"> - ore ${oreDiurneValue + oreNotturneValue}</span>  
+            <span><i class="fas fa-long-arrow-alt-right"></i></span>
+            <span class="oreTotaliLi">${oreTotaliValue}</span>  
+            <span> ore di cui notturne </span>
+            <span><i class="fas fa-long-arrow-alt-right"></i></span>
+            <span class="oreNotturneLi">${oreNotturneValue}</span>  
           </div>
           <span">${centrale.value.toUpperCase()}</span">
-          <span> - ${lavorazione.value}</span>
-          <span> - ${assistente.value}</span>
-          <i onclick="removeJob(event);" class="fa fa-trash-alt"></i> 
+          <span> - ${lavorazione.value} - </span>
+          <span class="assistenteLi">${assistente.value}</span>
+          <i onclick="removeJob(event);" class="fa fa-trash-alt trash"></i>
         </li>`;
     lista.insertAdjacentHTML("beforeend", job);
   }
-}
+
 
 // INVIA I DATI AL DATABASE
 function inviaDati(event) {
@@ -39,28 +42,16 @@ function inviaDati(event) {
       giorno: calendario.value,
       diaria: checkRadio(diaria),
       permessi: checkRadio(presenza),
-      reperibilita: checkRadio(reperibilita),
-      ore_130050: ore_130050.reduce((a, b)=> a + b, 0),
-      ore_130055: ore_130055.reduce((a, b)=> a + b, 0),
-      ore_140012: ore_140012.reduce((a, b)=> a + b, 0),
-      ore_140013: ore_140013.reduce((a, b)=> a + b, 0),
-      ore_160006: ore_160006.reduce((a, b)=> a + b, 0),
-      ore_160031: ore_160031.reduce((a, b)=> a + b, 0),
-      ore_170018: ore_170018.reduce((a, b)=> a + b, 0),
-      ore_170038: ore_170038.reduce((a, b)=> a + b, 0),
-      ore_170044: ore_170044.reduce((a, b)=> a + b, 0),
-      ore_170062: ore_170062.reduce((a, b)=> a + b, 0),
-      ore_170086: ore_170086.reduce((a, b)=> a + b, 0),
-      ore_attrezzatura: ore_attrezzatura.reduce((a, b)=> a + b, 0),
-      ore_notturne: oreNotturneArray.reduce((a, b)=> a + b, 0)
+      reperibilita: checkRadio(reperibilita)
   })
-    .then(() => {console.log('dati inviati correttamente')})
+    .then(() => console.log('dati inviati correttamente'))
     .catch(err => console.log(err));
 }
 
 // PRENDE I DATI DAL DATABASE
 function getDatiFirebase() {
-  db.collection("ore-mensili").get().then(snapshot => {
+  db.collection("ore-mensili").get()
+    .then(snapshot => {
     snapshot.forEach(doc => {
       let jobFirebase = doc.data();
       console.log(jobFirebase);
@@ -68,56 +59,127 @@ function getDatiFirebase() {
   })
 }
 
-// PUSH ORE JOB IN COMMESSA
-function pushOreInCommessa() {
-  switch (commessa.value) {
-    case "13-0050":
-      ore_130050.push(oreDiurneValue + oreNotturneValue);
-      break;
-    case "13-0055":
-      ore_130055.push(oreDiurneValue + oreNotturneValue);
-      break;
-    case "14-0012":
-      ore_140012.push(oreDiurneValue + oreNotturneValue);
-      break;
-    case "14-0013":
-      ore_140013.push(oreDiurneValue + oreNotturneValue);
-      break;
-    case "16-0006":
-      ore_160006.push(oreDiurneValue + oreNotturneValue);
-      break;
-    case "16-0031":
-      ore_160031.push(oreDiurneValue + oreNotturneValue);
-      break;
-    case "17-0018":
-      ore_170018.push(oreDiurneValue + oreNotturneValue);
-      break;
-    case "17-0038":
-      ore_170038.push(oreDiurneValue + oreNotturneValue);
-      break;
-    case "17-0044":
-      ore_170044.push(oreDiurneValue + oreNotturneValue);
-      break;
-    case "17-0062":
-      ore_170062.push(oreDiurneValue + oreNotturneValue);
-      break;
-    case "17-0086":
-      ore_170086.push(oreDiurneValue + oreNotturneValue);
-      break;
-    case "attrezzatura":
-      ore_attrezzatura.push(oreDiurneValue + oreNotturneValue);
-      break;
+// PUSH ORE IN ARRAY --> DA MIGLIORARE <--
+function pushOreInArray() {
+  let oreTotaliLi = document.querySelectorAll('.oreTotaliLi');
+  let oreNotturneLi = document.querySelectorAll('.oreNotturneLi');
+  oreTotaliLi.forEach(element => oreTotaliArray.push(parseInt(element.textContent)));
+  oreNotturneLi.forEach(element => oreNotturneArray.push(parseInt(element.textContent)));
+}
+
+// PUSH ASSISTENTE IN ARRAY --> DA MIGLIORARE <--
+function pushAssistenteInArray() {
+  let assistenteLi = document.querySelectorAll('.assistenteLi');
+  assistenteLi.forEach(element => assistenteArray.push(element.textContent));
+}
+
+// PUSH EMAIL IN ARRAY
+function pushEmailInArray() {
+  console.log(assistenteArray)
+  for (i = 0; i < assistenteArray.length; i++) {
+    switch (assistenteArray[i]) {
+        case 'Inverardi':
+            emailArray.push('f.inverardi@itafsrl.it');
+            emailArray.push('r.castelli@itafsrl.it');
+            break;
+        case 'Iozzo':
+            emailArray.push('m.iozzo@itafsrl.it');
+            emailArray.push('r.castelli@itafsrl.it');
+            break;
+        case 'Mattarini':
+            emailArray.push('c.mattarini@itafsrl.it');
+            emailArray.push('r.castelli@itafsrl.it');
+            break;
+        case 'Di Dedda':
+            emailArray.push('a.didedda@itafsrl.it');
+            emailArray.push('r.castelli@itafsrl.it');
+            break;
+        case 'Scicolone':
+            emailArray.push('c.scicolone@itafsrl.it');
+            emailArray.push('r.castelli@itafsrl.it');
+            break;
+        case 'Amato':
+            emailArray.push('f.amato@itafsrl.it');
+            emailArray.push('r.castelli@itafsrl.it');
+            break;
+        case 'Maurizio Gerna':
+            emailArray.push('f.amato@itafsrl.it');
+            emailArray.push('r.castelli@itafsrl.it');
+            break;
+        case 'Castelli':
+            emailArray.push('r.castelli@itafsrl.it');
+            break;
+        case 'Coltro':
+            emailArray.push('r.coltro@itafsrl.it');
+            break;
+        case 'Liguori':
+            emailArray.push('r.liguori@zelari.it');
+            break;
+    }
   }
 }
 
-// PUSH ORE NOTTURNE
-function pushOreNotturne() {
-  oreNotturneArray.push(oreNotturneValue);
+// CONFERMA INVIO DATI
+function confermaInvioDati() {
+  if (confirm(
+    `Premi OK per inviare Ore Giornaliere
+
+    giorno: ${calendario.value}
+    diaria: ${checkRadio(diaria)}
+    permessi: ${checkRadio(presenza)}
+    reperibilita: ${checkRadio(reperibilita)}
+    ore: ${sommaArray(oreTotaliArray)}
+    di cui notturne: ${sommaArray(oreNotturneArray)}`)) {
+    invioDati();
+  }
 }
 
-// RIMUOVE LAVORO DALL'ELENCO UL
+// INVIO DATI VIA EMAIL
+function invioDati() {
+  oggettoMail = `ore giornaliere del ${calendario.value}`;
+  testomail = 
+  `INFORMAZIONI GLOBALI%0A%0AData: 
+  ${calendario.value}%0ADiaria: 
+  ${checkRadio(diaria)}%0AOre_Totali (Diurne + Notturne): 
+  ${sommaArray(oreTotaliArray)}%0AOre_Notturne: 
+  ${sommaArray(oreNotturneArray)}%0AOre_Permesso: 
+  ${checkRadio(presenza)}%0AReperibilità: 
+  ${checkRadio(reperibilita)}%0A%0AAssistente: 
+  ${assistente.value}%0ACommessa: 
+  ${commessa.value}%0ACentrale: 
+  ${centrale.value}%0ALavoro: 
+  ${lavorazione.value}%0AOre Diurne: 
+  ${oreDiurneValue}%0AOre Notturne: 
+  ${oreNotturneValue}%0A%0A`;
+  
+  window.location.href = 'mailto:' + noDuplicateArray + "?subject=" + oggettoMail + "&body=" + testoMail;
+}
+
+
+
+// SOMMA ARRAY
+function sommaArray(array) {
+  array = array.reduce((a, b) => a + b, 0);
+  return array;
+}
+
+// ARRAY WITH NO DUPLICATES
+function noDuplicates(array) {
+  noDuplicateArray = [...new Set(array)];
+}
+
+// RIMUOVE LAVORO DALL'ELENCO UL-LI
 function removeJob(event) {
   event.target.parentNode.remove();
+}
+
+// SET DEFAULT RADIO VALUE
+function setSelectedRadio(select, value){
+  for (i = 0; i< select.options.length; i++) {
+    if (select.options[i].value == value) {
+      select.options[i].selected = true;
+    }
+  }
 }
 
 // RESTITUISCE IL VALORE DEI RADIO 

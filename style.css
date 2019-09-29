@@ -11,16 +11,6 @@ footer {
     color: grey;
 }
 
- i,
-.commessaLi,
-.oreLi {
-    color: brown;
-}
-
-i {
-    float: right;
-}
-
 li {
     font-size: 0.9em;
     margin-top: 15px;
@@ -63,8 +53,23 @@ input[type="date"] {
 
 .buttons {
     margin-bottom: 10px;
-    margin-top: 10px;
-    text-align: right;
+}
+
+.commessaLi {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: brown;
+}
+
+.trash {
+    float: right;
+    color: brown;
+}
+
+.oreTotaliLi,
+.oreNotturneLi {
+    font-size: 1.1em;
+    font-weight: bold;
 }
 
 .presenza_radio input,
