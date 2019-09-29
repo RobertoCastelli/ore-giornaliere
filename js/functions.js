@@ -138,24 +138,24 @@ function confermaInvioDati() {
 function invioDati() {
   oggettoMail = `ore giornaliere del ${calendario.value}`;
   testomail = 
-  `INFORMAZIONI GLOBALI%0A%0AData: 
-  ${calendario.value}%0ADiaria: 
-  ${checkRadio(diaria)}%0AOre_Totali (Diurne + Notturne): 
-  ${sommaArray(oreTotaliArray)}%0AOre_Notturne: 
-  ${sommaArray(oreNotturneArray)}%0AOre_Permesso: 
-  ${checkRadio(presenza)}%0AReperibilità: 
-  ${checkRadio(reperibilita)}%0A%0AAssistente: 
-  ${assistente.value}%0ACommessa: 
-  ${commessa.value}%0ACentrale: 
-  ${centrale.value}%0ALavoro: 
-  ${lavorazione.value}%0AOre Diurne: 
-  ${oreDiurneValue}%0AOre Notturne: 
-  ${oreNotturneValue}%0A%0A`;
+  `INFORMAZIONI GLOBALI%0A%0A
+  Data: ${calendario.value}%0A
+  Diaria: ${checkRadio(diaria)}%0A
+  Ore_Totali (Diurne + Notturne): ${sommaArray(oreTotaliArray)}%0A
+  Ore_Notturne: ${sommaArray(oreNotturneArray)}%0A
+  Ore_Permesso: ${checkRadio(presenza)}%0A
+  Reperibilità: ${checkRadio(reperibilita)}%0A%0A
+
+  INFORMAZIONI LAVORI%0A%0A
+  Assistente: ${assistente.value}%0A
+  Commessa: ${commessa.value}%0A
+  Centrale: ${centrale.value}%0A
+  Lavoro: ${lavorazione.value}%0A
+  Ore Diurne: ${oreDiurneValue}%0A
+  Ore Notturne: ${oreNotturneValue}%0A%0A`;
   
   window.location.href = 'mailto:' + noDuplicateArray + "?subject=" + oggettoMail + "&body=" + testoMail;
 }
-
-
 
 // SOMMA ARRAY
 function sommaArray(array) {
