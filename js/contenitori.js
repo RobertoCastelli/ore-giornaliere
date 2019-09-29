@@ -42,7 +42,7 @@ let assistenteArray = [];
 let emailArray = [];
 let noDuplicateArray = [];
 let oggettoMail;
-let testoMail;
+
 
 
 
