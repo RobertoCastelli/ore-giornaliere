@@ -136,7 +136,7 @@ function confermaInvioDati() {
 
 // INVIO DATI VIA EMAIL
 function invioDati() {
-  oggettoMail = `ore giornaliere del ${calendario.value}`;
+  let oggettoMail = `ore giornaliere del ${calendario.value}`;
   let testoMail =   
   `INFORMAZIONI GLOBALI%0A%0A
   Data: ${calendario.value}%0A

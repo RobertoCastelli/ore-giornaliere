@@ -54,7 +54,6 @@ aggiungi.addEventListener('click', () => {
         alert("Inserire nome centrale");
     } else {
     populateJob();
-    centrale.value = '';
     id++;
     }
 });
@@ -72,22 +71,3 @@ invia.addEventListener('click', () => {
     // if (confirm('Conferma invio dati al server')) inviaDati(event);
 });
 
-
-
-
-// var bodyMessage1 = [];
-// var oggetto = `Ore Giornaliere del ${calendario.value}`;
-
-
-
-//         // --- INSERISCE lavori dentro il BODY EMAIL
-//         var bodyMessage = `Assistente: ${assistente.value}%0ACommessa: ${commessa.value}%0ACentrale: ${centrale.value}%0ALavoro: ${txtVal.value}%0AOre Diurne: ${oreDiurneVal}%0AOre Notturne: ${oreNotturneVal}%0A%0A`;
-//         bodyMessage1.push(bodyMessage);
-
-//  
-//         // --- BODY del messaggio EMAIL 
-//         var bodyMessage2 = `INFORMAZIONI GLOBALI%0A%0AData: ${calendario.value}%0ADiaria: ${diariaVal}%0AOre_Totali (Diurne + Notturne): ${sommaTotaliDiurne + sommaTotaliNotturne}%0AOre_Notturne: ${sommaTotaliNotturne}%0AOre_Permesso: ${presenzaVal}%0AReperibilità: ${reperibilitaVal}%0A%0AINFORMAZIONI LAVORI%0A%0A${bodyMessage1}`;
-//         window.location.href = 'mailto:' + emailUniqueArray + "?subject=" + oggetto + "&body=" + bodyMessage2;
-//         console.log(emailUniqueArray);
-//     }
-// });
