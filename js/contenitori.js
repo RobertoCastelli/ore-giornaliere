@@ -41,6 +41,7 @@ let assistenteArray = [];
 
 let emailArray = [];
 let noDuplicateArray = [];
+let testoMailLavori;
 
 
 

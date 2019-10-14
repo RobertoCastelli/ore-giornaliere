@@ -53,8 +53,9 @@ aggiungi.addEventListener('click', () => {
     if (centrale.value == "") {
         alert("Inserire nome centrale");
     } else {
-    populateJob();
-    id++;
+        populateJob();
+        pushJobInArray();
+        id++;
     }
 });
 

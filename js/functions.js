@@ -12,37 +12,36 @@ function populateList(arr, idSelect) {
 
 // AGGIUNGE LAVORO NELL'ELENCO UL
 function populateJob() {
-    oreDiurneValue = parseInt(oreDiurne.value);
-    oreNotturneValue = parseInt(oreNotturne.value);
-    oreTotaliValue = oreDiurneValue + oreNotturneValue;
-    // HTML STRUCTURE FOR JOB
-    let job = 
-        `<li id=${id}>
+  oreDiurneValue = parseInt(oreDiurne.value);
+  oreNotturneValue = parseInt(oreNotturne.value);
+  oreTotaliValue = oreDiurneValue + oreNotturneValue;
+  // HTML STRUCTURE FOR JOB
+  let job =
+    `<li id=${id}>
           <div>
-            <span class="commessaLi">${commessa.value}</span>
+            <span class="commessaLi"> >> ${commessa.value}</span>
             <span><i class="fas fa-long-arrow-alt-right"></i></span>
             <span class="oreTotaliLi">${oreTotaliValue}</span>  
             <span> ore di cui notturne </span>
             <span><i class="fas fa-long-arrow-alt-right"></i></span>
             <span class="oreNotturneLi">${oreNotturneValue}</span>  
           </div>
-          <span">${centrale.value.toUpperCase()}</span">
-          <span> - ${lavorazione.value} - </span>
-          <span class="assistenteLi">${assistente.value}</span>
+          <span"> - ${centrale.value.toUpperCase()}</span">
+          <span> - ${lavorazione.value}</span>
+          <span class="assistenteLi"> - ${assistente.value}</span>
           <i onclick="removeJob(event);" class="fa fa-trash-alt trash"></i>
         </li>`;
-    lista.insertAdjacentHTML("beforeend", job);
-  }
-
+  lista.insertAdjacentHTML("beforeend", job);
+}
 
 // INVIA I DATI AL DATABASE
 function inviaDati(event) {
   event.preventDefault();
   db.collection("ore-mensili").add({
-      giorno: calendario.value,
-      diaria: checkRadio(diaria),
-      permessi: checkRadio(presenza),
-      reperibilita: checkRadio(reperibilita)
+    giorno: calendario.value,
+    diaria: checkRadio(diaria),
+    permessi: checkRadio(presenza),
+    reperibilita: checkRadio(reperibilita)
   })
     .then(() => console.log('dati inviati correttamente'))
     .catch(err => console.log(err));
@@ -52,11 +51,11 @@ function inviaDati(event) {
 function getDatiFirebase() {
   db.collection("ore-mensili").get()
     .then(snapshot => {
-    snapshot.forEach(doc => {
-      let jobFirebase = doc.data();
-      console.log(jobFirebase);
+      snapshot.forEach(doc => {
+        let jobFirebase = doc.data();
+        console.log(jobFirebase);
+      })
     })
-  })
 }
 
 // PUSH ORE IN ARRAY --> DA MIGLIORARE <--
@@ -73,48 +72,62 @@ function pushAssistenteInArray() {
   assistenteLi.forEach(element => assistenteArray.push(element.textContent));
 }
 
+// PUSH LAVORI IN ARRAY 
+function pushJobInArray() {
+  testoMailLavori = lista.innerText;
+  // let testoMailLavoro =
+  //   `Assistente: ${assistente.value}%0A
+  //   Commessa: ${commessa.value}%0A
+  //   Centrale: ${centrale.value.toUpperCase()}%0A
+  //   Lavoro: ${lavorazione.value}%0A
+  //   Ore Diurne: ${oreDiurneValue}%0A
+  //   Ore Notturne: ${oreNotturneValue}%0A%0A`;
+
+  // testoMailLavori.push(testoMailLavoro);
+}
+
 // PUSH EMAIL IN ARRAY
 function pushEmailInArray() {
   console.log(assistenteArray)
   for (i = 0; i < assistenteArray.length; i++) {
     switch (assistenteArray[i]) {
-        case 'Inverardi':
-            emailArray.push('f.inverardi@itafsrl.it');
-            emailArray.push('r.castelli@itafsrl.it');
-            break;
-        case 'Iozzo':
-            emailArray.push('m.iozzo@itafsrl.it');
-            emailArray.push('r.castelli@itafsrl.it');
-            break;
-        case 'Mattarini':
-            emailArray.push('c.mattarini@itafsrl.it');
-            emailArray.push('r.castelli@itafsrl.it');
-            break;
-        case 'Di Dedda':
-            emailArray.push('a.didedda@itafsrl.it');
-            emailArray.push('r.castelli@itafsrl.it');
-            break;
-        case 'Scicolone':
-            emailArray.push('c.scicolone@itafsrl.it');
-            emailArray.push('r.castelli@itafsrl.it');
-            break;
-        case 'Amato':
-            emailArray.push('f.amato@itafsrl.it');
-            emailArray.push('r.castelli@itafsrl.it');
-            break;
-        case 'Maurizio Gerna':
-            emailArray.push('f.amato@itafsrl.it');
-            emailArray.push('r.castelli@itafsrl.it');
-            break;
-        case 'Castelli':
-            emailArray.push('r.castelli@itafsrl.it');
-            break;
-        case 'Coltro':
-            emailArray.push('r.coltro@itafsrl.it');
-            break;
-        case 'Liguori':
-            emailArray.push('r.liguori@zelari.it');
-            break;
+      case 'Inverardi':
+        emailArray.push('f.inverardi@itafsrl.it');
+        emailArray.push('r.castelli@itafsrl.it');
+        break;
+      case 'Iozzo':
+        emailArray.push('m.iozzo@itafsrl.it');
+        emailArray.push('r.castelli@itafsrl.it');
+        break;
+      case 'Mattarini':
+        emailArray.push('c.mattarini@itafsrl.it');
+        emailArray.push('r.castelli@itafsrl.it');
+        break;
+      case 'Di Dedda':
+        emailArray.push('a.didedda@itafsrl.it');
+        emailArray.push('r.castelli@itafsrl.it');
+        break;
+      case 'Scicolone':
+        emailArray.push('c.scicolone@itafsrl.it');
+        emailArray.push('r.castelli@itafsrl.it');
+        break;
+      case 'Amato':
+        emailArray.push('f.amato@itafsrl.it');
+        emailArray.push('r.castelli@itafsrl.it');
+        break;
+      case 'Gerna':
+        emailArray.push('f.amato@itafsrl.it');
+        emailArray.push('r.castelli@itafsrl.it');
+        break;
+      case 'Castelli':
+        emailArray.push('r.castelli@itafsrl.it');
+        break;
+      case 'Coltro':
+        emailArray.push('r.coltro@itafsrl.it');
+        break;
+      case 'Liguori':
+        emailArray.push('r.liguori@zelari.it');
+        break;
     }
   }
 }
@@ -137,8 +150,8 @@ function confermaInvioDati() {
 // INVIO DATI VIA EMAIL
 function invioDati() {
   let oggettoMail = `ore giornaliere del ${calendario.value}`;
-  let testoMail =   
-  `INFORMAZIONI GLOBALI%0A%0A
+  let testoMail =
+    `INFORMAZIONI GLOBALI%0A%0A
   Data: ${calendario.value}%0A
   Diaria: ${checkRadio(diaria)}%0A
   Ore_Totali (Diurne + Notturne): ${sommaArray(oreTotaliArray)}%0A
@@ -147,13 +160,8 @@ function invioDati() {
   Reperibilità: ${checkRadio(reperibilita)}%0A%0A
 
   INFORMAZIONI LAVORI%0A%0A
-  Assistente: ${assistente.value}%0A
-  Commessa: ${commessa.value}%0A
-  Centrale: ${centrale.value.toUpperCase()}%0A
-  Lavoro: ${lavorazione.value}%0A
-  Ore Diurne: ${oreDiurneValue}%0A
-  Ore Notturne: ${oreNotturneValue}%0A%0A`;
-  
+  ${testoMailLavori}`;
+
   window.location.href = 'mailto:' + noDuplicateArray + "?subject=" + oggettoMail + "&body=" + testoMail;
 }
 
@@ -174,8 +182,8 @@ function removeJob(event) {
 }
 
 // SET DEFAULT RADIO VALUE
-function setSelectedRadio(select, value){
-  for (i = 0; i< select.options.length; i++) {
+function setSelectedRadio(select, value) {
+  for (i = 0; i < select.options.length; i++) {
     if (select.options[i].value == value) {
       select.options[i].selected = true;
     }
