@@ -54,7 +54,6 @@ aggiungi.addEventListener('click', () => {
         alert("Inserire nome centrale");
     } else {
         populateJob();
-        pushJobInArray();
         id++;
     }
 });
@@ -62,13 +61,19 @@ aggiungi.addEventListener('click', () => {
 // PUSH ORE 
 // PUSH ASSISTENTI 
 // PUSH EMAIL && DELETE DUPLICATES
+// PUSH JOBS
 // CONFIRM SEND && SEND EMAIL
 invia.addEventListener('click', () => {
-    pushOreInArray();
-    pushAssistenteInArray();
-    pushEmailInArray();
-    noDuplicates(emailArray);
-    confermaInvioDati();
-    // if (confirm('Conferma invio dati al server')) inviaDati(event);
+    if (lista.innerText == '') {
+        alert('Inserisci un lavoro');
+        emailArray = [];
+    } else {
+        pushOreInArray();
+        pushAssistenteInArray();
+        pushEmailInArray();
+        noDuplicates(emailArray);
+        pushJobInArray();
+        confermaInvioDati();
+    }
 });
 

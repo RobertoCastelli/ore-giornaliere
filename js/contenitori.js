@@ -11,7 +11,6 @@ let commesse = [
   "17-0044",
   "17-0062",
   "17-0086",
-  "attrezzatura"
 ];
 
 let assistenti = [
@@ -41,7 +40,7 @@ let assistenteArray = [];
 
 let emailArray = [];
 let noDuplicateArray = [];
-let testoMailLavori;
+let testoMailLavori =[];
 
 
 

@@ -26,9 +26,9 @@ function populateJob() {
             <span><i class="fas fa-long-arrow-alt-right"></i></span>
             <span class="oreNotturneLi">${oreNotturneValue}</span>  
           </div>
-          <span"> - ${centrale.value.toUpperCase()}</span">
-          <span> - ${lavorazione.value}</span>
-          <span class="assistenteLi"> - ${assistente.value}</span>
+          <span">${centrale.value.toUpperCase()}</span">
+          <span>${lavorazione.value}</span>
+          <span class="assistenteLi">${assistente.value}</span>
           <i onclick="removeJob(event);" class="fa fa-trash-alt trash"></i>
         </li>`;
   lista.insertAdjacentHTML("beforeend", job);
@@ -64,31 +64,33 @@ function pushOreInArray() {
   let oreNotturneLi = document.querySelectorAll('.oreNotturneLi');
   oreTotaliLi.forEach(element => oreTotaliArray.push(parseInt(element.textContent)));
   oreNotturneLi.forEach(element => oreNotturneArray.push(parseInt(element.textContent)));
+  console.log(oreTotaliArray);
+  console.log(oreNotturneArray);
 }
 
 // PUSH ASSISTENTE IN ARRAY --> DA MIGLIORARE <--
 function pushAssistenteInArray() {
   let assistenteLi = document.querySelectorAll('.assistenteLi');
   assistenteLi.forEach(element => assistenteArray.push(element.textContent));
+  console.log(assistenteArray);
 }
 
 // PUSH LAVORI IN ARRAY 
 function pushJobInArray() {
-  testoMailLavori = lista.innerText;
-  // let testoMailLavoro =
+  let testoMailLavoro = lista.textContent;
   //   `Assistente: ${assistente.value}%0A
   //   Commessa: ${commessa.value}%0A
   //   Centrale: ${centrale.value.toUpperCase()}%0A
   //   Lavoro: ${lavorazione.value}%0A
   //   Ore Diurne: ${oreDiurneValue}%0A
   //   Ore Notturne: ${oreNotturneValue}%0A%0A`;
-
-  // testoMailLavori.push(testoMailLavoro);
+  testoMailLavori.push(testoMailLavoro);
+  console.log(testoMailLavori);
 }
 
 // PUSH EMAIL IN ARRAY
 function pushEmailInArray() {
-  console.log(assistenteArray)
+  console.log(assistenteArray);
   for (i = 0; i < assistenteArray.length; i++) {
     switch (assistenteArray[i]) {
       case 'Inverardi':
@@ -142,10 +144,16 @@ function confermaInvioDati() {
     permessi: ${checkRadio(presenza)}
     reperibilita: ${checkRadio(reperibilita)}
     ore: ${sommaArray(oreTotaliArray)}
-    di cui notturne: ${sommaArray(oreNotturneArray)}`)) {
+    di cui notturne: ${sommaArray(oreNotturneArray)}`)){
     invioDati();
-  }
+    }
+    // ANNULLA ULTIMO INSERIMENTO
+      oreTotaliArray = [];
+      oreNotturneArray = [];
+      assistenteArray = [];
+      testoMailLavori = [];
 }
+
 
 // INVIO DATI VIA EMAIL
 function invioDati() {
